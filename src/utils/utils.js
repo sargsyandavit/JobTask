@@ -16,3 +16,10 @@ export const listData = [
   ];
  
   export const periodData = ['Ivory', 'Red', 'Фонд-1', 'Фонд-2', 'Фонд-3'];
+
+  export const dataperiod = [
+      {name: "Месячная", periodId: "m"},
+      {name: "Квартальная", periodId: "q"},
+      {name: "Годовая", periodId: "y"},
+      {name: "Нерегулярная", periodId: "r"},
+  ];
