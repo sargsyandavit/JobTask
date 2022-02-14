@@ -4,12 +4,12 @@ import './List.css';
 import RightPanel from "./rightPanel/RightPanel";
 import LeftPanel from "./leftPanel/LeftPanel";
 
-const List = () => {
+const List = ({finlyElement}) => {
   return(
       <div className="listContent">
         <div className="list">
             <LeftPanel/>
-            <RightPanel/>
+            <RightPanel finlyElement={finlyElement}/>
         </div>
       </div>
   );  
