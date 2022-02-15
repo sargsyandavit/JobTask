@@ -204,9 +204,9 @@ export const listData = [
   },
 ];
 
-export const periodData = ['Ivory', 'Red', 'Фонд-1', 'Фонд-2', 'Фонд-3'];
+export const fondData = ['Ivory', 'Red', 'Фонд-1', 'Фонд-2', 'Фонд-3'];
 
-export const dataperiod = [
+export const periodData = [
   { name: 'Месячная', periodId: 'm' },
   { name: 'Квартальная', periodId: 'q' },
   { name: 'Годовая', periodId: 'y' },

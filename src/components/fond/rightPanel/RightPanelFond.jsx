@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './RightPanelFond.css';
-import { periodData } from "../../../utils/utils";
+import { fondData } from "../../../utils/utils";
 
 const RightPanelFond = () => {
     const [value, setValue] = useState('Ivory');
@@ -10,37 +10,48 @@ const handleChackRadio = (ev) => {
 }
 
 const handleChackOption = (ev) => {
-    setValue(ev.target.value)
+    setValue(ev.target.value);
+}
+
+const hanleChoseFond = (fond) => {
+  setValue(fond);
 }
     return (
       <div className="listPanelFond">
-        <div className="payItemFond">
-                {periodData.map(item => 
-                <button className={item === value ? 'red' : ''} key={item}>{item}</button>
-                    )}
-            </div>
+         <div className="payItemFond">
+            {fondData.map(item => 
+              <button 
+                onClick={() => hanleChoseFond(item)}
+                className={item === value ? 'red' : ''} 
+                key={item}>
+                {item}
+              </button>
+                )}
+         </div>
            <div className="selectFond">
-             <select defaultValue={value} onChange={(ev) => handleChackOption(ev)}>
+             <select value={value} onChange={(ev) => handleChackOption(ev)}>
                 {
-                 periodData.map((item,index) => 
-                    <option value={item} key={item}>{item}</option>
-                )
-                }
+                 fondData.map((item,index) => 
+                 <option 
+                  value={item} 
+                  key={index}>
+                  {item}</option>
+                )}
              </select>
            </div>
           <div className="radioFond">
             {
-							periodData.map((item, index) =>
-									<div key={item}>
-											<input
-												onChange={(ev) => handleChackRadio(ev)} 
-												type="radio"
-												name={item}  
-												checked={item === value } 
-												value={value}
-											/>
-											<label htmlFor={item}>{item}</label>
-									</div> 
+					fondData.map((item) =>
+							<div key={item}>
+								<input
+									onChange={(ev) => handleChackRadio(ev, item)} 
+									type="radio"
+									name={item}  
+									checked={ item === value } 
+									value={value}
+								/>
+								<label htmlFor={item}>{item}</label>
+							</div> 
 									)
             }
           </div>
@@ -49,6 +60,3 @@ const handleChackOption = (ev) => {
 };
 
 export default RightPanelFond;
-
-
-//defaultChecked={index ===0}

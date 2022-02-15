@@ -1,11 +1,11 @@
 import React from "react";
 import './Table.css'
 
-const Table  = ({tableDate}) => {
+const Table  = ({tableData}) => {
     return (
         <div className="table">
            <ul>
-           {tableDate.map((elem,index) => 
+           {tableData.map((elem,index) => 
             <ol className="tableList" key={index}>
                 {elem.nfoType}
             </ol>

@@ -4,13 +4,9 @@ import Fond from "./components/fond/Fond";
 import Form from "./components/form/Form";
 import './App.css'
 import { listData } from "./utils/utils";
-import { regexpForPeriodTypeIdmreg } from "./utils/regexp/regexp";
+
 const App = () =>  {
-  const [isValide, setIsValide] = useState(false)
-  
   const [listDataState, setListDataState] = useState(listData);
-  
-  
   const [newDataElement, setNewDataElement] = useState({
     nfoType: '',
     description: '',
@@ -22,26 +18,23 @@ const App = () =>  {
         ...newDataElement, 
         [key]: ev.target.value,   
       });
-      setIsValide({
-        isValide: handelValidation(key, ev.target.value),
-      });
-
  };
-
- const handleAddNewEelement = () => {
+ const addNewEelement = () => {
      if(newDataElement.nfoType && newDataElement.description && newDataElement.reportPeriodTypeId !== ''){
+       if(newDataElement.reportPeriodTypeId === 'm' || newDataElement.reportPeriodTypeId === 'y' || newDataElement.reportPeriodTypeId === 'r' || newDataElement.reportPeriodTypeId === 'q'){
         setListDataState([...listDataState, newDataElement]);
-     }
-     
+        setNewDataElement({
+          nfoType: '',
+          description: '',
+          reportPeriodTypeId: '',
+        });
+       }
+     } 
  };
 
- const handelValidation = (key, value) => {
-   if(key === "reportPeriodTypeId") return regexpForPeriodTypeIdmreg.test(value);
-   
-}
   return (
     <div className="app">
-    <Form handleInputValue={handleInputValue} handleAddNewEelement={handleAddNewEelement} />
+      <Form newDataElement={newDataElement} handleInputValue={handleInputValue} addNewEelement={addNewEelement} />
       <List listData={listDataState} newDataElement={newDataElement}/>
       <Fond />
     </div>

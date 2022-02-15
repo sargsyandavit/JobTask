@@ -1,9 +1,8 @@
 import React from "react";
-import './LeftPanelFond.css';
 
 const LeftPanelFond = () => {
   return (
-    <div className="menuPanel">
+    <div>
       <ul>
          <li>Фонд</li>
          <li>Фонд</li>
