@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import Table from "../../table/Table";
-import { listData, dataperiod } from "../../../utils/utils";
+import { dataperiod } from "../../../utils/utils";
 import './RightPanel.css';
 
-const RightPanel = ({finlyElement}) => {
+const RightPanel = ({listData}) => {
   const [value, setValue] = useState('m');
   const [color, setColor] = useState(false);
   const [tableDate,setTableDate] = useState([]);
-;
-
-const data = finlyElement
 
   const handleChackOption = (ev) => {
     setValue(ev.target.value)
-    
     if(dataperiod.map(item => item.periodId === value)){
       setColor(!color)
     }
   };
 
-// listData.push(data)
   const handleChosePeriod = (ev) => {
     const newDate = listData.filter(elem => elem.reportPeriodTypeId === ev);
     if(tableDate !== []) {
@@ -27,7 +22,6 @@ const data = finlyElement
     }
     setTableDate(newDate);
   } 
-  console.log(data)
 
     return (
      <>
@@ -51,8 +45,8 @@ const data = finlyElement
          </div>
          <div className="select">
              <select onChange={ev => handleChackOption(ev) }>
-               {listData.map(item => 
-               <option key={item.description} value={item.reportPeriodTypeId}>{item.nfoType}</option>
+               {listData.map((item, index) => 
+               <option key={index} value={item.reportPeriodTypeId}>{item.nfoType}</option>
                 )};
             </select>
         </div>

@@ -1,0 +1,1 @@
+export const regexpForPeriodTypeIdmreg = /^[myrq]{1}$/;
